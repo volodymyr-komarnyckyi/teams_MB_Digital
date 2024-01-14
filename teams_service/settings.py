@@ -1,10 +1,13 @@
+import os
 from pathlib import Path
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = [
-    "django-insecure-!#gux19lb)*_a*wv9)434hb*2y$g6*n_q&6(p4ddz!mv_g*8qq"
-]
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
 DEBUG = True
 
@@ -57,8 +60,12 @@ WSGI_APPLICATION = "teams_service.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.getenv("POSTGRES_NAME"),
+        "USER": os.getenv("POSTGRES_USER"),
+        "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
+        "HOST": os.getenv("POSTGRES_HOST"),
+        "PORT": os.getenv("POSTGRES_PORT")
     }
 }
 
