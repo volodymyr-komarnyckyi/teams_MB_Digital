@@ -15,7 +15,7 @@ urlpatterns = [
     ),
 
     path(
-        "api/teams/",
+        "api/team/",
         include("teams.urls", namespace="teams")
     ),
 
