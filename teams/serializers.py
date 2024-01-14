@@ -1,4 +1,5 @@
 from rest_framework import serializers
+
 from teams.models import Team
 from user.serializers import UserShowSerializer
 
@@ -15,4 +16,8 @@ class TeamDetailSerializer(TeamSerializer):
 
 
 class TeamListSerializer(TeamSerializer):
-    members = serializers.SlugRelatedField(many=True, read_only=True, slug_field="email")
+    members = serializers.SlugRelatedField(
+        many=True,
+        read_only=True,
+        slug_field="email"
+    )
